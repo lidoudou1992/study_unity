@@ -18,16 +18,16 @@ public class Mean : MonoBehaviour {
             Debug.Log(item.width + "x" + item.height);
         }
         Screen.SetResolution(resolutions[3].width, resolutions[3].height, true);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+    
+    // Update is called once per frame
+    void Update () {
+        
+    }
 
     private void OnGUI()
     {
-        GUI.DrawTexture(new Rect(0,0, ScreenValues().x, ScreenValues().y), image1);
+        GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height), image1);
         int touchCount = Input.touchCount;
         if (touchCount > 0)
         {
@@ -39,12 +39,12 @@ public class Mean : MonoBehaviour {
             float x = position.x;
             float y = position.y;
 
-            GUI.DrawTexture(new Rect(x, ScreenValues().y - y, 120, 120), image2);
-            GUI.Label(new Rect(x, ScreenValues().y - y, 120, 120), "坐标为： " + position);
+            GUI.DrawTexture(new Rect(x, Screen.height - y, 120, 120), image2);
+            GUI.Label(new Rect(x, Screen.height - y, 120, 120), "坐标为： " + position);
         }
     }
 
-    //获取当前的屏幕坐标
+    //获取当前的屏幕分辨率
     public Vector2 ScreenValues()
     {
         float left;
@@ -63,6 +63,7 @@ public class Mean : MonoBehaviour {
         heighe = top - bown;
 
         Vector2 Screen_values = new Vector2(width, heighe);
+        Debug.Log("当前的屏幕分辨率为：" + "x:" + Screen_values.x + "y:" +Screen_values.y);
         return Screen_values;
     }
 
