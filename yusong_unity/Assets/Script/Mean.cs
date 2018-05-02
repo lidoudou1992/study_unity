@@ -16,7 +16,7 @@ namespace YuSong{
 
             // Use this for initialization
             void Start () {
-                Debug.Log("当前touch状态为：" + UIcontrol.show_touch);
+                //Debug.Log("当前touch状态为：" + UIcontrol.show_touch);
                 Debug.Log("level" + Data.Me.name);
                 //无什么大用
 //                Resolution[] resolutions = Screen.resolutions;
