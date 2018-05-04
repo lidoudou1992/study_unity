@@ -5,39 +5,47 @@ using LitJson;
 using System.IO;
 using System;
 
+
+[System.Serializable]
+public class FamilyInfo
+{
+    public string name;
+    public int age;
+    public string tellphone;
+    public string address;
+}
+
+public class FamilyList {
+    public List<FamilyInfo> family_list;
+}
+
 public class litjson : MonoBehaviour {
-    private string tempPath = Application.persistentDataPath + "/temp.json";
+    public FamilyList m_FamilyList = null;
 
-    // Use this for initialization
-    void Start () {
-	    
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    private void SaveTempData()
+    private void Start()
     {
-        FileInfo fileInfo = new FileInfo(tempPath);
-        GameStatus status = new GameStatus();
-        //把类转换为Json格式的String
-        string str = JsonMapper.ToJson(status);
-        //写入本地
-        StreamWriter sw = fileInfo.CreateText();
-        sw.WriteLine(str);
-        sw.Close();
-        sw.Dispose();
+        ReloadFamilyData();
+        DisplayFamilyList(m_FamilyList);
     }
 
-    public void LoadTempData(String tempString)
+    private void ReloadFamilyData()
     {
-        FileInfo fileInfo = new FileInfo(tempPath);
-        if (fileInfo.Exists)
+        UnityEngine.TextAsset s = Resources.Load("family") as TextAsset;
+        string tmp = s.text;
+        m_FamilyList = JsonMapper.ToObject<FamilyList>(tmp);
+    }
+
+    private void DisplayFamilyList(FamilyList familylist)
+    {
+        if (familylist == null) return;
+
+        //foreach (FamilyInfo item in familylist.family_list)
+        //{
+        //    Debug.Log("Name:" + item.name + "       Age:" + item.age + "        Tel:" + item.tellphone + "      Addr:" + item.address);
+        //}
+        for (int i = 0; i < familylist.family_list.Count; i++)
         {
-            string tempString1 = File.ReadAllText(tempPath);
-            GameStatus status = JsonMapper.ToObject<GameStatus>(tempString1);
+            Debug.Log("[ldd]:::   " + familylist.family_list[i].name);
         }
     }
 

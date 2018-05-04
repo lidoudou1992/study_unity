@@ -9,6 +9,8 @@ namespace YuSong{
 
 		public class UIcontrol : MonoBehaviour {
 
+            public FamilyList family_list = null;
+
             //Dropdown
             public Dropdown dropdown;
             public string[] showText;
@@ -66,6 +68,8 @@ namespace YuSong{
             {
                 Debug.Log("new value:" + change.value);
             }
+
+            //读取jaon
 
 
         }
