@@ -19,7 +19,16 @@ namespace YuSong{
             List<Sprite> sprite_list;
             public Image other_img;//任意的img，用来赋值替换
 
-			//public static bool show_touch;
+            //public static bool show_touch;
+
+            public bool  isPause=false;
+            public bool  isFocus=false;
+
+            void OnEnable()
+            {
+                isPause = false;
+                isFocus = false;
+            }
 
             private void Start()
             {
@@ -52,6 +61,7 @@ namespace YuSong{
                 dropdown.captionImage = other_img;
             }
 
+
             void AddName()
             {
                 for (int i = 0; i < showText.Length; i++)
@@ -70,6 +80,39 @@ namespace YuSong{
             }
 
             //读取jaon
+
+            void OnApplicationPause()
+            {
+#if UNITY_IPHONE || UNITY_ANDROID
+                Debug.Log("OnApplicationPause  " + isPause + "  " + isFocus);
+                if (!isPause)
+                {
+                    // 强制暂停时，事
+                }
+                else
+                {
+                    isFocus = true;
+                }
+                isPause = true;
+#endif
+            }
+
+            void OnApplicationFocus(bool  focus)
+            {
+#if UNITY_IPHONE || UNITY_ANDROID
+                Debug.Log("OnApplicationFocus  " + isPause + "  " + isFocus);
+                if (focus)
+                {
+                    // “启动”手机时，事件
+                    isPause = false;
+                    isFocus = false;
+                }
+                if (isPause)
+                {
+                    isFocus = true;
+                }
+#endif
+            }
 
 
         }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width= "match_parent"
+    android:layout_height="match_parent" android:layout_marginTop="60dp"
+    android:layout_marginBottom="60dp" android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp" android:background="#424242"
+    android:padding="10dp" android:gravity="center"
+    >
+
+    <TextView
+        android:id="@+id/permission_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/permission_notification"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="12dp"
+        android:textColor="#cfcfcf"/>
+
+	
+    <RelativeLayout
+        android:id="@+id/permission_func"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/permission_center_flag"
+            android:layout_marginTop="8dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+			android:visibility="invisible"
+        	android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/permission_cancel"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+			android:layout_toLeftOf="@id/permission_center_flag"
+            android:textColor="#2fac47"/>
+
+        <TextView
+            android:id="@+id/permission_setting"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+			android:layout_toRightOf="@id/permission_center_flag"
+            android:textColor="#2fac47"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/permission_go_next"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"
+        android:visibility="gone"
+        android:textColor="#2fac47"/>
+
+</LinearLayout>
